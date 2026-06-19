@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test aja ini mah U</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    background:linear-gradient(to bottom,#050505,#111);
+    font-family:Georgia,serif;
+    color:white;
+}
+
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    z-index:10;
+}
+
+.small{
+    color:#d4af37;
+    letter-spacing:5px;
+    margin-bottom:15px;
+    font-size:12px;
+}
+
+h1{
+    font-size:70px;
+    text-shadow:0 0 20px white;
+    animation:glow 2s infinite alternate;
+}
+
+button{
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#d4af37;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#gift{
+    display:none;
+    margin-top:30px;
+    animation:fade 2s;
+}
+
+#gift h2{
+    margin-bottom:10px;
+}
+
+#gift p{
+    max-width:500px;
+    line-height:1.7;
+}
+
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+    50%{
+        opacity:0.2;
+    }
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px white;
+    }
+    to{
+        text-shadow:0 0 30px gold;
+    }
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.heart{
+    position:absolute;
+    color:#ff4d6d;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="small">ADA HADIAH</div>
+
+    <h1>Mang Muhali</h1>
+
+    <button onclick="openGift()">
+         Buka ini special
+    </button>
+
+    <div id="gift">
+        <h2>Boleh pinjam 100 ❤️</h2>
+
+        <p>
+            HAHAHAHHAHAHAHAHAHAHAHAHAHAHA ✨<br><br>
+            ❤️
+        </p>
+    </div>
+</div>
+
+<script>
+
+// Bintang
+for(let i=0;i<150;i++){
+    let star=document.createElement("div");
+    star.className="star";
+
+    let size=Math.random()*3;
+
+    star.style.width=size+"px";
+    star.style.height=size+"px";
+
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+
+    document.body.appendChild(star);
+}
+
+// Tombol hadiah
+function openGift(){
+
+    document.getElementById("gift").style.display="block";
+
+    // hati jatuh
+    setInterval(()=>{
+        let heart=document.createElement("div");
+
+        heart.innerHTML="❤️";
+        heart.className="heart";
+
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=
+            (20+Math.random()*30)+"px";
+
+        heart.style.animationDuration=
+            (3+Math.random()*4)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },7000);
+
+    },250);
+}
+
+</script>
+
+</body>
+</html>
